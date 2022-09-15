@@ -6,10 +6,9 @@ import pymsteams
 
 from racetrack_client.manifest import Manifest
 from racetrack_commons.entities.dto import FatmanDto
-from racetrack_commons.plugin.core import PluginCore
 
 
-class Plugin(PluginCore):
+class Plugin:
 
     def __init__(self) -> None:
         self.webhook_url = os.environ.get('TEAMS_WEBHOOK')
@@ -33,7 +32,7 @@ class Plugin(PluginCore):
         readme_markdown = readme_file.read_text()
         info_markdown = f"""
 # Plugin configuration
-- **Plugin version (git ref)**: {self.plugin_config.git_ref}
+- **Plugin version**: {self.plugin_manifest.version}
         """
         return readme_markdown + info_markdown
 

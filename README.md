@@ -9,18 +9,8 @@ It sends events when:
 ## Setup
 1. Create webhook for a Teams channel - 
   https://docs.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook
-2. Activate the plugin in Racetrack, 
-  add the following to your Lifecycle configuration (in kustomize ConfigMap):
 
-```yaml
-plugins:
-- name: teams-notifier
-  git_remote: https://github.com/TheRacetrack/plugin-teams-notifications
-  git_ref: '1.0.0'
-  git_directory: teams-notifier
-```
-
-3. Set `TEAMS_WEBHOOK` environment variable to your webhook URL for Lifcycle component.
+2. Set `TEAMS_WEBHOOK` environment variable to your webhook URL for Lifcycle component.
   You can set different webhooks for different deployment environments.
   For instance:
   ```yaml
@@ -38,4 +28,10 @@ plugins:
             env:
               - name: TEAMS_WEBHOOK
                 value: 'https://webhook.office.com/webhookb2/...'
-```
+  ```
+
+3. [Install racetrack-plugin-bundler](https://github.com/TheRacetrack/racetrack/blob/master/utils/plugin_bundler/README.md)
+  and generate ZIP plugin by running `make bundle`.
+
+4. Activate the plugin in Racetrack Dashboard Admin page
+  by uploading the zipped plugin file.
