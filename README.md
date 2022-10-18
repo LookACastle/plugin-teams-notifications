@@ -30,8 +30,7 @@ It sends events when:
                 value: 'https://webhook.office.com/webhookb2/...'
   ```
 
-3. [Install racetrack-plugin-bundler](https://github.com/TheRacetrack/racetrack/blob/master/utils/plugin_bundler/README.md)
-  and generate ZIP plugin by running `make bundle`.
+3. Install `racetrack` client and generate ZIP plugin by running `make bundle`.
 
 4. Activate the plugin in Racetrack Dashboard Admin page
   by uploading the zipped plugin file.
