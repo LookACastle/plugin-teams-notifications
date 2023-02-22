@@ -5,7 +5,7 @@ from pathlib import Path
 import pymsteams
 
 from racetrack_client.manifest import Manifest
-from racetrack_commons.entities.dto import FatmanDto
+from racetrack_commons.entities.dto import JobDto
 
 
 class Plugin:
@@ -14,15 +14,15 @@ class Plugin:
         self.webhook_url = os.environ.get('TEAMS_WEBHOOK')
         assert self.webhook_url, 'TEAMS_WEBHOOK env var was not set'
 
-    def post_fatman_deploy(self, manifest: Manifest, fatman: FatmanDto, image_name: str, deployer_username: str = None):
-        """Supplementary actions invoked after fatman is deployed"""
+    def post_job_deploy(self, manifest: Manifest, job: JobDto, image_name: str, deployer_username: str = None):
+        """Supplementary actions invoked after job is deployed"""
         cluster = os.environ.get('CLUSTER_FQDN')
-        self._send_notification(f'Fatman {fatman} has been deployed to {cluster} cluster by {deployer_username}')
+        self._send_notification(f'Job {job} has been deployed to {cluster} cluster by {deployer_username}')
 
-    def post_fatman_delete(self, fatman: FatmanDto, username_executor: str = None):
-        """Supplementary actions invoked after fatman is deleted"""
+    def post_job_delete(self, job: JobDto, username_executor: str = None):
+        """Supplementary actions invoked after job is deleted"""
         cluster = os.environ.get('CLUSTER_FQDN')
-        self._send_notification(f'Fatman {fatman} has been deleted from {cluster} cluster by {username_executor}')
+        self._send_notification(f'Job {job} has been deleted from {cluster} cluster by {username_executor}')
 
     def markdown_docs(self) -> Optional[str]:
         """

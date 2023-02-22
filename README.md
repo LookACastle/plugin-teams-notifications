@@ -3,8 +3,8 @@
 This plugin sends Racetrack notifications to Teams channel.
 
 It sends events when:
-- job is submitted (fatman deployed)
-- fatman is deleted
+- job is submitted (job deployed)
+- job is deleted
 
 ## Setup
 1. Create webhook for a Teams channel - 
